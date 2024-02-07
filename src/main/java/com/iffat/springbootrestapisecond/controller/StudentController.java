@@ -66,8 +66,14 @@ public class StudentController {
 
     // Spring Boot REST API that handles HTTP PUT Request updating existing student
     @PutMapping("/students/{id}/update")
-    public Student updateStudent(@RequestBody Student student,@PathVariable int id) {
+    public Student updateStudent(@RequestBody Student student, @PathVariable int id) {
         student.setId(id);
         return student;
+    }
+
+    // Spring Boot REST API that handles HTTP DELETE Request
+    @DeleteMapping("/students/{id}/delete")
+    public String deleteStudent(@PathVariable("id") int studentId) {
+        return "Deleted id: " + studentId + " successfully";
     }
 }

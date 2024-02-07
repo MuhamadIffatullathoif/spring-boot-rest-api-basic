@@ -1,7 +1,9 @@
 package com.iffat.springbootrestapisecond.controller;
 
 import com.iffat.springbootrestapisecond.bean.Student;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -36,5 +38,15 @@ public class StudentController {
                 "Khan"
         ));
         return students;
+    }
+
+    // Spring Boot REST API with path variable
+    // {id} - URI template variable
+    // http://localhost:8080/student/1/iffat/khan
+    @GetMapping("/student/{id}/{first-name}/{last-name}")
+    public Student studentPathVariable(@PathVariable("id") int studentId,
+                                       @PathVariable("first-name") String firstName,
+                                       @PathVariable("last-name") String lastName) {
+        return new Student(studentId, firstName, lastName);
     }
 }

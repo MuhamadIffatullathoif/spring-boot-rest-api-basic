@@ -1,6 +1,7 @@
 package com.iffat.springbootrestapisecond.controller;
 
 import com.iffat.springbootrestapisecond.bean.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -54,5 +55,12 @@ public class StudentController {
                                           @RequestParam String firstName,
                                           @RequestParam String lastName) {
         return new Student(id, firstName, lastName);
+    }
+
+    // Spring Boot REST API that handles HTTP POST Request
+    @PostMapping("/students/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student student) {
+        return student;
     }
 }

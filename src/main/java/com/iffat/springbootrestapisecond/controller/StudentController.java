@@ -4,6 +4,9 @@ import com.iffat.springbootrestapisecond.bean.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class StudentController {
 
@@ -16,5 +19,22 @@ public class StudentController {
                 "Khan"
         );
         return student;
+    }
+
+    //http://localhost:8080/students
+    @GetMapping("/students")
+    public List<Student> getStudents() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(
+                1,
+                "Iffat",
+                "Khan"
+        ));
+        students.add(new Student(
+                2,
+                "Iffat",
+                "Khan"
+        ));
+        return students;
     }
 }
